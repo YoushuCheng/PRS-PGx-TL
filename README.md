@@ -41,11 +41,12 @@ If step 1 and 3 are performed on each chromosome separately, choose to run the s
 Rscript s4.R 
 ```
 
-The M1-M4 corresponding to the arguments:
+The M1-M4 corresponding to the choice arguments:
 | Model | initial values | criterion
 | :--- | :--- | :--- | 
-| M1 | 0.003038 | 0.06421 
-| M1 | 0.003038 | 0.06421 
-| M1 | 0.003038 | 0.06421 
+| M1 | 0.003038 | `best_R2`
+| M2 | 0.003038 | `best_R2`
+| M3 | 0.003038 | `best_condR2`
+| M4 | 0.003038 | `best_condR2`
 
 ### To use PRS-PGx-TL-M5 or M6
