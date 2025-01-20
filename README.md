@@ -31,8 +31,13 @@ Rscript s2.R [file for phenotype and covariates] [initial values] [path for outp
 Rscript s3.R [file for PRS weights from disease GWAS] [file for phenotype and covariates] [file for genotype] [file for SNP information] [initial values] [number of total snps with non-zero effects] [criterion] [path for outputs in s2] [path for outputs in s3]
 ```
 - The inputs `file for PRS weights from disease GWAS`, `file for phenotype and covariates`, `file for genotype`, `file for SNP information`, `initial values`, `number of total snps with non-zero effects` are the same as those in `s1.R`.
+- **criterion:** `best_R2` or `best_condR2`, indicating whether to maximize overall R2 or the conditional R2 of GxT (conditional on G) when selecting the best parameter. 
+- **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_result`.
+- **path for outputs in s3:** The output from step 3. For example, `/Mypath/s3_result`.
 
 #### Step 4: sum the PRS over all chromosomes for the testing samples (optional)
-
-
+If step 1 and 3 are performed on each chromosome separately, choose to run the step 4 to sum the PRS over all 22 chromosomes for the testing samples:
+```
+Rscript s4.R 
+```
 ### To use PRS-PGx-TL-M5 or M6
