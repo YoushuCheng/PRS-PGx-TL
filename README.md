@@ -26,12 +26,12 @@ Rscript s2.R [file for phenotype and covariates] [initial values] [path for outp
 - **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_result`.
 - **indicator of whether files for all 22 chromosomes are separated:** `yes` or `no`, indicating whether step 1 is performed on all chromosomes or on each chromosome separately.
 
-#### Step 3: rerun the algorithm and get the output with the best parameter
+#### Step 3: rerun the algorithm and get the output with the best parameters
 ```
 Rscript s3.R [file for PRS weights from disease GWAS] [file for phenotype and covariates] [file for genotype] [file for SNP information] [initial values] [number of total snps with non-zero effects] [criterion] [path for outputs in s2] [path for outputs in s3]
 ```
 - The inputs `file for PRS weights from disease GWAS`, `file for phenotype and covariates`, `file for genotype`, `file for SNP information`, `initial values`, `number of total snps with non-zero effects` are the same as those in `s1.R`.
-- **criterion:** `best_R2` or `best_condR2`, indicating whether to maximize overall R2 or the conditional R2 of GxT (conditional on G) when selecting the best parameter. 
+- **criterion:** `best_R2` or `best_condR2`, indicating whether to maximize overall R2 or the conditional R2 of GxT (conditional on G) when selecting the best parameters. 
 - **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_result`.
 - **path for outputs in s3:** The output from step 3. For example, `/Mypath/s3_result`.
 
@@ -40,4 +40,12 @@ If step 1 and 3 are performed on each chromosome separately, choose to run the s
 ```
 Rscript s4.R 
 ```
+
+The M1-M4 corresponding to the arguments:
+| Model | initial values | criterion
+| :--- | :--- | :--- | 
+| M1 | 0.003038 | 0.06421 
+| M1 | 0.003038 | 0.06421 
+| M1 | 0.003038 | 0.06421 
+
 ### To use PRS-PGx-TL-M5 or M6
