@@ -44,9 +44,9 @@ Rscript s4.R
 The M1-M4 corresponding to the choice arguments:
 | Model | initial values | criterion
 | :--- | :--- | :--- | 
-| M1 | 0.003038 | `best_R2`
-| M2 | 0.003038 | `best_R2`
-| M3 | 0.003038 | `best_condR2`
-| M4 | 0.003038 | `best_condR2`
+| M1 | `zero` | `best_R2`
+| M2 | `PRS` | `best_R2`
+| M3 | `zero` | `best_condR2`
+| M4 | `PRS` | `best_condR2`
 
 ### To use PRS-PGx-TL-M5 or M6
