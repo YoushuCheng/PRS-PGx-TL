@@ -30,7 +30,7 @@ Rscript s2.R [file for phenotype and covariates] [initial values] [path for outp
 ```
 Rscript s3.R [file for PRS weights from disease GWAS] [file for phenotype and covariates] [file for genotype] [file for SNP information] [initial values] [number of total snps with non-zero effects] [criterion] [path for outputs in s2] [path for outputs in s3]
 ```
-- The inputs `file for PRS weights from disease GWAS`, `file for phenotype and covariates`, `file for genotype`, `file for SNP information`, `initial values`, `number of total snps with non-zero effects` are the same as those in `s1.R`.
+- The inputs `file for PRS weights from disease GWAS`, `file for phenotype and covariates`, `file for genotype`, `file for SNP information`, `initial values`, `number of total snps with non-zero effects` are the same as those in `s1.R`. 
 - **criterion:** `best_R2` or `best_condR2`, indicating whether to maximize overall R2 or the conditional R2 of GxT (conditional on G) when selecting the best parameters. 
 - **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_result`.
 - **path for outputs in s3:** The output from step 3. For example, `/Mypath/s3_result`.
