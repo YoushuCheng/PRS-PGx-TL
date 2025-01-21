@@ -41,7 +41,7 @@ If step 1 and 3 are performed on each chromosome separately, choose to run the s
 Rscript s4.R 
 ```
 
-The M1-M4 corresponding to the choice arguments:
+The choice of M1-M4 corresponds to the following arguments:
 | Model | initial values | criterion
 | :--- | :--- | :--- | 
 | M1 | `zero` | `best_R2`
