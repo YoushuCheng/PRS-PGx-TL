@@ -17,7 +17,7 @@ output = args[7]
 #sum_stats: GWAS PRS weights 
 #           need columns: chr, SNP, BP, Eff, Ref, Beta (need to be matched and flip)
 #ped: y and covar for the full-training set
-#     need columns: ID, Y, covars (including Tr), prs_g, prs_gt (from sum_stats)
+#     need columns: ID, Y, covars (including Tr), prs_g (from sum_stats)
 #     
 #G: genotype matrix ind x SNP 
 #   need rownames as ID, colnames as SNP
@@ -26,6 +26,7 @@ output = args[7]
 
 sum_stats = as.data.frame(fread(paste0(sum_stats),header=T))
 ped = as.data.frame(fread(paste0(ped),header=T))
+ped$prs_gt = ped$Tr * ped$prs_g
 load(paste0(G))
 bim = as.data.frame(fread(paste0(bim),header=T))
 G = G[rownames(G) %in% ped$ID, ]
