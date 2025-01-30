@@ -33,7 +33,7 @@ Rscript s3.R [file for PRS weights from disease GWAS] [file for phenotype and co
 - The inputs `file for PRS weights from disease GWAS`, `file for phenotype and covariates`, `file for genotype`, `file for SNP information`, `initial values`, `number of total snps with non-zero effects` are the same as those in `s1.R`. 
 - **criterion:** `best_R2` or `best_condR2`, indicating whether to maximize overall R2 or the conditional R2 of GxT (conditional on G) when selecting the best parameters. 
 - **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_result`.
-- **path for outputs in s3:** The output from step 3. For example, `/Mypath/s3_result`.
+- **path for outputs in s3:** The output from step 3. For example, `/Mypath/s3_result`. If step 3 is performed on each chromosome separately, please save the outputs as `/Mypath/s3_result_1`,`/Mypath/s3_result_2`...`/Mypath/s3_result_22`.
 
 
 The choice of M1-M4 corresponds to the following arguments:
@@ -75,7 +75,7 @@ Rscript s3.R [file for PRS weights from disease GWAS] [file for phenotype and co
 ```
 - The inputs `file for PRS weights from disease GWAS`, `file for phenotype and covariates`, `file for genotype`, `file for SNP information`, `initial values`, `number of total snps with non-zero effects` are the same as those in `s1_fixG.R`.  
 - **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_fixG_result`.
-- **path for outputs in s3:** The output from step 3. For example, `/Mypath/s3_fixG_result`.
+- **path for outputs in s3:** The output from step 3. For example, `/Mypath/s3_fixG_result`. If step 3 is performed on each chromosome separately, please save the outputs as `/Mypath/s3_fixG_result_1`,`/Mypath/s3_fixG_result_2`...`/Mypath/s3_fixG_result_22`.
 
 
 
