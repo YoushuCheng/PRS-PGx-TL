@@ -35,18 +35,29 @@ Rscript s3.R [file for PRS weights from disease GWAS] [file for phenotype and co
 - **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_result`.
 - **path for outputs in s3:** The output from step 3. For example, `/Mypath/s3_result`.
 
-#### Step 4: sum the PRS over all chromosomes for the testing samples (optional)
-If step 1 and 3 are performed on each chromosome separately, choose to run the step 4 to sum the PRS over all 22 chromosomes for the testing samples:
-```
-Rscript s4.R 
-```
 
 The choice of M1-M4 corresponds to the following arguments:
 | Model | initial values | criterion
-| :--- | :--- | :--- | 
+| :--- | :--- | :--- |
 | M1 | `zero` | `best_R2`
 | M2 | `PRS` | `best_R2`
 | M3 | `zero` | `best_condR2`
 | M4 | `PRS` | `best_condR2`
 
 ### To use PRS-PGx-TL-M5 or M6
+#### Step 1: inner layer CV
+
+
+The choice of M5-M6 corresponds to the following arguments:
+| Model | initial values 
+| :--- | :--- |
+| M5 | `zero` |
+| M6 | `PRS` |
+
+
+#### Step 4: sum the PRS over all chromosomes for the testing samples (optional)
+If step 1 and 3 are performed on each chromosome separately, choose to run the step 4 to sum the PRS over all 22 chromosomes for the testing samples:
+```
+Rscript s4.R 
+```
+
