@@ -104,7 +104,7 @@ The choice of M5-M6 corresponds to the following arguments:
 | M6 | `PRS` |
 
 
-### Data for example:
+### Data needed for example:
 
 SE from GWAS:
 ```
