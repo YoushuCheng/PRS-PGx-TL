@@ -104,5 +104,16 @@ The choice of M5-M6 corresponds to the following arguments:
 | M6 | `PRS` |
 
 
+### Data for example:
+
+SE from GWAS:
+```
+/SFS/archive/data1/bardstms/shenjud/2024SummerIntern/simu/prepare/se_pool.txt
+```
+
+Reference panel for Lassosum:
+```
+/SFS/archive/data1/bardstms/shenjud/2024SummerIntern/1000G_ref/EUR_all
+```
 
 
