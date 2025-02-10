@@ -13,6 +13,17 @@ initial = args[5] #'PRS' or 'zero'
 num_snp = as.numeric(args[6]) #number of total snps with non-zero eff
 output = args[7]
 
+### default arguments (optional)
+covar <- gsub(x = args[grep(x = args, pattern = "covar=")], pattern = "covar=", replacement = "")
+if (length(covar) == 0) {
+    covar <- 'Tr'
+} else {
+    covars <- unlist(strsplit(covar, ","))
+    covar <- paste0(c('Tr', covars), collapse = " + ")
+}
+print(covar)
+
+
 #################### read required input
 #sum_stats: GWAS PRS weights 
 #           need columns: chr, SNP, BP, Eff, Ref, Beta (need to be matched and flip)
@@ -56,7 +67,7 @@ bim_sum_stats=bim_sum_stats[is.na(bim_sum_stats$Beta2)==F,]
 
 ######### 1. split into 4 (3 for training, 1 for validation)
 group_assignment <- rep(1:4, each = nrow(ped) %/% 4)
-group_assignment <- c(group_assignment, 1:(nrow(ped) %% 4))
+if (nrow(ped) %% 4 > 0){ group_assignment <- c(group_assignment, 1:(nrow(ped) %% 4))}
 set.seed(123)  
 # Randomly assign each individual to one of 4 groups
 ped$group <- sample(group_assignment)
@@ -66,9 +77,9 @@ group_values <- as.numeric(names(table(ped$group)))
 ######### 2. adjust the phenotype 
 adjust_y <- function(data, valid_gp){
     #data = ped
-    #j=group_values[1]
+    #valid_gp=group_values[1]
     data = data[data$group != valid_gp, ]
-    model0=lm(Y ~ Tr + age + gender + PLL + baseline + EACS + ACSD + PC1 + PC2 + PC3 + PC4 + PC5, data=data)
+    model0=lm(paste0('Y ~ ',covar), data=data)
     data$res = model0$residuals
     model1=lm(res ~ prs_g + prs_gt, data=data)
 

@@ -11,6 +11,16 @@ s1_output = args[3]
 s2_output = args[4]
 allchr = args[5] #yes: allchr in one file, no: 22 files for each chr 
 
+### default arguments (optional)
+covar <- gsub(x = args[grep(x = args, pattern = "covar=")], pattern = "covar=", replacement = "")
+if (length(covar) == 0) {
+    covar <- 'Tr'
+} else {
+    covars <- unlist(strsplit(covar, ","))
+    covar <- paste0(c('Tr', covars), collapse = " + ")
+}
+print(covar)
+
 ##########  read required input
 #X:  y and covar for the full-training set
 #     need columns: ID, Y, covars (including Tr), 
@@ -38,7 +48,7 @@ collect <- function(j){
     tunning = rbind(rep(0,ncol(tunning)), tunning)
     
     #add the prs across all chromosomes
-    if (allchr == 'yes') {
+    if (allchr == 'no') {
         for (chr in 2:22){
             load(paste0(s1_output,'_',chr,'_initial_',initial,'_innerCV_',j,'.Rdata'))
             prs_g = prs_g + result$score_g
@@ -61,9 +71,9 @@ collect <- function(j){
     prs_gtt_train = prs_gt_train * df_train$Tr
 
 
-    model0=lm(Y ~ Tr + age + gender + PLL + baseline + EACS + ACSD + PC1 + PC2 + PC3 + PC4 + PC5, data=df)
+    model0=lm(paste0('Y ~ ',covar), data=df)
     df$res = model0$residuals
-    model0_train=lm(Y ~ Tr + age + gender + PLL + baseline + EACS + ACSD + PC1 + PC2 + PC3 + PC4 + PC5, data=df_train)
+    model0_train=lm(paste0('Y ~ ',covar), data=df_train)
     df_train$res = model0_train$residuals
 
     tunning$R2 = tunning$R2_g = tunning$R2_gt = tunning$R2_train = tunning$R2_g_train = tunning$R2_gt_train = tunning$condR2_gt = tunning$condR2_gt_train = NA
@@ -76,7 +86,7 @@ collect <- function(j){
         tunning[i,'R2_g'] = summary(model2)$r.squared
         model3=lm(df$res ~ prs_gtt[,i])
         tunning[i,'R2_gt'] = summary(model3)$r.squared
-        model_g=lm(Y ~ Tr + age + gender + PLL + baseline + EACS + ACSD + PC1 + PC2 + PC3 + PC4 + PC5 + prs_g, data=df)
+        model_g=lm(paste0('Y ~ prs_g + ',covar), data=df)
         df$res_g = model_g$residuals
         model4=lm(res_g ~ prs_gtt, data=df)
         tunning[i,'condR2_gt'] = summary(model4)$r.squared
@@ -91,7 +101,7 @@ collect <- function(j){
         tunning[i,'R2_g_train'] = summary(model2)$r.squared
         model3=lm(df_train$res ~ prs_gtt_train[,i])
         tunning[i,'R2_gt_train'] = summary(model3)$r.squared
-        model_g=lm(Y ~ Tr + age + gender + PLL + baseline + EACS + ACSD + PC1 + PC2 + PC3 + PC4 + PC5 + prs_g, data=df_train)
+        model_g=lm(paste0('Y ~ prs_g + ',covar), data=df_train)
         df_train$res_g = model_g$residuals
         model4=lm(res_g ~ prs_gtt, data=df_train)
         tunning[i,'condR2_gt_train'] = summary(model4)$r.squared

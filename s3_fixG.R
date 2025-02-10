@@ -15,6 +15,16 @@ num_snp = as.numeric(args[6]) #number of total snps with non-zero eff
 s2_output = args[7]
 s3_output = args[8]
 
+### default arguments (optional)
+covar <- gsub(x = args[grep(x = args, pattern = "covar=")], pattern = "covar=", replacement = "")
+if (length(covar) == 0) {
+  covar <- 'Tr'
+} else {
+  covars <- unlist(strsplit(covar, ","))
+  covar <- paste0(c('Tr', covars), collapse = " + ")
+}
+print(covar)
+
 #################### required input
 #sum_stats: GWAS PRS weights 
 #           need columns: chr, SNP, BP, Eff, Ref, Beta (need to be matched and flip)
@@ -64,7 +74,7 @@ adjust_y <- function(data){
     #data = ped
     #data = data[data$group != valid_gp, ]
     #adjust covariates and PRS_G!!!
-    model0=lm(Y ~ Tr + age + gender + PLL + baseline + EACS + ACSD + PC1 + PC2 + PC3 + PC4 + PC5 + prs_g, data=data)
+    model0=lm(paste0('Y ~ prs_g + ',covar), data=data)
     data$res = model0$residuals
     model1=lm(res ~ prs_gt, data=data)
 
