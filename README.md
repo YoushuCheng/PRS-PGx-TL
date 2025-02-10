@@ -5,7 +5,8 @@ A transfer learning (TL) based method to leverage large-scale disease GWAS summa
 ### To use PRS-PGx-TL-M1, M2, M3, or M4
 #### Step 1: inner layer CV
 ```
-Rscript s1.R [file for PRS weights from disease GWAS] [file for phenotype and covariates] [file for genotype] [file for SNP information] [initial values] [number of total snps with non-zero effects] [path for outputs in s1]
+Rscript s1.R [file for PRS weights from disease GWAS] [file for phenotype and covariates] [file for genotype] [file for SNP information] [initial values] [number of total snps with non-zero effects] [path for outputs in s1] \
+covar="age,gender"
 ```
 - **file for PRS weights from disease GWAS:** The following columns are required: `chr`, `SNP`, `BP`, `Eff`, `Ref`, `Beta`, which represent chromosome, SNP, base pair position, effect allele, reference allele, and beta coefficient, respectively. Column names are needed.
 ```
@@ -58,6 +59,7 @@ id10         0          1          0          1         2         1
 - **initial values:** `PRS` or `zero`, indicating the starting values of the predictive effects.
 - **number of total snps with non-zero effects:** The total number of SNPs in PRS weights file that have non-zero effects.
 - **path for outputs in s1:** For example, `/Mypath/s1_result`. If step 1 is performed on each chromosome separately, please save the outputs as `/Mypath/s1_result_1`,`/Mypath/s1_result_2`...`/Mypath/s1_result_22`.
+- **Optional arguments:** covar specifies covariates to be adjusted in the model (except `Tr`). For example, specify `covar="age,gender"` to include `age` and `gender` in the model (`Tr` will be included automatically). If not specified, only `Tr` will be included.
 
 
 #### Step 2: parameter tuning
