@@ -1,0 +1,2 @@
+lambda	factor	steps	mean_r2	mean_cond_r2
+0	1	8	0.112789373520653	0.0297850776403569
