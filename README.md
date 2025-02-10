@@ -59,7 +59,7 @@ id10         0          1          0          1         2         1
 - **initial values:** `PRS` or `zero`, indicating the starting values of the predictive effects.
 - **number of total snps with non-zero effects:** The total number of SNPs in PRS weights file that have non-zero effects.
 - **path for outputs in s1:** For example, `/Mypath/s1_result`. If step 1 is performed on each chromosome separately, please save the outputs as `/Mypath/s1_result_1`,`/Mypath/s1_result_2`...`/Mypath/s1_result_22`.
-- **Optional arguments:** `covar` specifies covariates to be adjusted in the model (except `Tr`). For example, specify `covar="age,gender"` to include `age` and `gender` in the model (`Tr` will be included automatically). If not specified, only `Tr` will be included.
+- **Optional arguments:** `covar` specifies covariates to be adjusted in the model (other than `Tr`). For example, specify `covar="age,gender"` to include `age` and `gender` in the model (`Tr` will be included automatically). If not specified, only `Tr` will be included.
 
 
 #### Step 2: parameter tuning
@@ -72,7 +72,7 @@ covar="age,gender"
 - **path for outputs in s1:** The output from step 1. For example, `/Mypath/s1_result`. If step 1 is performed on each chromosome separately and the outputs are saved as `/Mypath/s1_result_1`,`/Mypath/s1_result_2`...`/Mypath/s1_result_22`, just need to input `/Mypath/s1_result` here and the algorithm will add `_chr` automatically.
 - **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_result`.
 - **indicator of whether files for all 22 chromosomes are separated:** `yes` or `no`, indicating whether step 1 is performed on all chromosomes or on each chromosome separately.
-- **Optional arguments:** `covar` specifies covariates to be adjusted in the model (except `Tr`). 
+- **Optional arguments:** `covar` specifies covariates to be adjusted in the model (other than `Tr`). 
 
 
 #### Step 3: rerun the algorithm and get the output with the best parameters
@@ -117,7 +117,7 @@ covar="age,gender"
 - **initial values:** `PRS` or `zero`, indicating the starting values of the predictive effects.
 - **number of total snps with non-zero effects:** The total number of SNPs in PRS weights file that have non-zero effects.
 - **path for outputs in s1:** For example, `/Mypath/s1_fixG_result`. If step 1 is performed on each chromosome separately, please save the outputs as `/Mypath/s1_fixG_result_1`,`/Mypath/s1_fixG_result_2`...`/Mypath/s1_fixG_result_22`.
-- **Optional arguments:** `covar` specifies covariates to be adjusted in the model (except `Tr`). For example, specify `covar="age,gender"` to include `age` and `gender` in the model (`Tr` will be included automatically). If not specified, only `Tr` will be included.
+- **Optional arguments:** `covar` specifies covariates to be adjusted in the model (other than `Tr`). For example, specify `covar="age,gender"` to include `age` and `gender` in the model (`Tr` will be included automatically). If not specified, only `Tr` will be included.
 
 
 #### Step 2: parameter tuning
@@ -130,7 +130,7 @@ covar="age,gender"
 - **path for outputs in s1:** The output from step 1. For example, `/Mypath/s1_fixG_result`. If step 1 is performed on each chromosome separately and the outputs are saved as `/Mypath/s1_fixG_result_1`,`/Mypath/s1_fixG_result_2`...`/Mypath/s1_fixG_result_22`, just need to input `/Mypath/s1_fixG_result` here and the algorithm will add `_chr` automatically.
 - **path for outputs in s2:** The output from step 2. For example, `/Mypath/s2_fixG_result`.
 - **indicator of whether files for all 22 chromosomes are separated:** `yes` or `no`, indicating whether step 1 is performed on all chromosomes or on each chromosome separately.
-- **Optional arguments:** `covar` specifies covariates to be adjusted in the model (except `Tr`). 
+- **Optional arguments:** `covar` specifies covariates to be adjusted in the model (other than `Tr`). 
 
 
 #### Step 3: rerun the algorithm and get the output with the best parameters
