@@ -1,0 +1,2 @@
+lambda	factor	steps	mean_r2
+0.5	1	55	0.141561843692969
