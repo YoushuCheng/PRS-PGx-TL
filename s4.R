@@ -15,8 +15,8 @@ load(paste0(s3_output, '_1_testScoresum_initial_',initial,'_',best_criterion,'.R
 prs_g = test$score_g
 prs_gt = test$score_gt
 
-for (i in 2:22){
-  load(load(paste0(s3_output, '_',chr,'_testScoresum_initial_',initial,'_',best_criterion,'.Rdata')))
+for (chr in 2:22){
+  load(paste0(s3_output, '_',chr,'_testScoresum_initial_',initial,'_',best_criterion,'.Rdata'))
   prs_g = prs_g + test$score_g
   prs_gt = prs_gt + test$score_gt
   
